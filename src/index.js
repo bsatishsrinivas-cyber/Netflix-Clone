@@ -448,7 +448,7 @@ for (let i = 0; i < accordian.length; i++) {
     if (activeUser) {
       updateNavAuthState(activeUser);
     }
-  } catch (e) {}
+  } catch (e) { }
 })();
 
 /* ==========================================================================
@@ -923,3 +923,105 @@ for (let i = 0; i < accordian.length; i++) {
 })();
 
 
+const siteHeader = document.querySelector("header");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 80) {
+    siteHeader.classList.add("nav--scrolled");
+  } else {
+    siteHeader.classList.remove("nav--scrolled");
+  }
+});
+window.dispatchEvent(new Event("scroll"));
+document.addEventListener("DOMContentLoaded", () => {
+  // -------------------------
+  // FAQ EXPAND/COLLAPSE
+  // -------------------------
+  const faqTitles = document.querySelectorAll(".FAQ__title");
+
+  faqTitles.forEach(title => {
+    title.addEventListener("click", () => {
+      const panel = title.nextElementSibling;
+      const icon = title.querySelector("i");
+
+      // Toggle active class on title
+      title.classList.toggle("active");
+
+      // Close all other panels
+      document.querySelectorAll(".FAQ__visible").forEach(openPanel => {
+        if (openPanel !== panel) {
+          openPanel.style.maxHeight = null;
+          openPanel.previousElementSibling.classList.remove("active");
+          openPanel.previousElementSibling.querySelector("i").style.transform = "rotate(0deg)";
+        }
+      });
+
+      // Open/close clicked panel
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+        icon.style.transform = "rotate(0deg)";
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + "px";
+        icon.style.transform = "rotate(45deg)";
+      }
+    });
+  });
+
+  // -------------------------
+  // Email Input Animation
+  // -------------------------
+  const emailInput = document.querySelector(".email__input");
+  const emailLabel = document.querySelector(".email__label");
+
+  if (emailInput && emailLabel) {
+    emailInput.addEventListener("focus", () => {
+      emailLabel.style.top = "0px";
+      emailLabel.style.fontSize = "12px";
+    });
+
+    emailInput.addEventListener("blur", () => {
+      if (!emailInput.value) {
+        emailLabel.style.top = "28%";
+        emailLabel.style.fontSize = "16px";
+      }
+    });
+  }
+
+  // -------------------------
+  // Footer Language Dropdown
+  // -------------------------
+  const footerLang = document.querySelector(".footer__row__3 .dropdown__container");
+  const footerLangSelect = document.querySelector(".footer__row__3 .language__drop__down");
+
+  if (footerLang) {
+    footerLang.addEventListener("click", () => {
+      if (footerLangSelect) footerLangSelect.click();
+    });
+  }
+});
+const starButtons = document.querySelectorAll(".star__btn");
+const feedbackSubmit = document.getElementById("feedbackSubmit");
+const feedbackThanks = document.getElementById("feedbackThanks");
+let selectedRating = 0;
+
+starButtons.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    selectedRating = Number(btn.dataset.value);
+    starButtons.forEach((s) => {
+      s.classList.toggle("filled", Number(s.dataset.value) <= selectedRating);
+    });
+  });
+});
+
+feedbackSubmit.addEventListener("click", () => {
+  if (selectedRating === 0) {
+    feedbackThanks.textContent = "Please pick a rating first.";
+    feedbackThanks.style.color = "#e50914";
+    feedbackThanks.classList.add("visible");
+    return;
+  }
+  feedbackThanks.textContent = "Thanks for your feedback.";
+  feedbackThanks.style.color = "#46d369";
+  feedbackThanks.classList.add("visible");
+  feedbackSubmit.disabled = true;
+});
