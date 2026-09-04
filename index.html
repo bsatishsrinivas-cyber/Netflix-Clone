@@ -72,23 +72,56 @@
             Unlimited Movies TV,<br />
             Shows and More.
           </h1>
-          <p class="hero__subtitle">Watch anywhere and cancel anytime.</p>
-          <p class="hero__description">
-            Ready to watch? Enter your email to create or restart your
-            membership .
-          </p>
 
-          <div class="email__form__container">
-            <div class="form__container">
-              <input type="email" class="email__input" placeholder=" " />
-              <label class="email__label">Email Address</label>
+          <div class="movie__search__container" id="movieSearchSection">
+            <div class="search__bar__wrapper">
+              <i class="fas fa-search search__icon"></i>
+              <input
+                type="text"
+                id="movieSearchInput"
+                class="movie__search__input"
+                placeholder="Search movies, TV shows, genres (e.g. Stranger Things, Sci-Fi)..."
+                autocomplete="off"
+              />
+              <button type="button" id="clearSearchBtn" class="clear__search__btn" style="display: none;" title="Clear search">&times;</button>
+              <button type="button" class="primary__button movie__search__btn" id="movieSearchBtn">
+                Search <i class="fal fa-chevron-right"></i>
+              </button>
             </div>
-            <button class="primary__button">
-              Get Started <i class="fal fa-chevron-right"></i>
-            </button>
+
+            <!-- Live Search Results Dropdown -->
+            <div class="movie__search__dropdown" id="movieSearchDropdown" style="display: none;">
+              <div class="search__dropdown__header">
+                <span class="search__dropdown__title" id="dropdownHeaderTitle">Popular Titles</span>
+                <span class="search__count" id="searchResultCount"></span>
+              </div>
+              <div class="movie__results__list" id="movieResultsList">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      <!-- Moving Movies Section (Infinite Motion Marquee) -->
+      <section class="moving__movies__section">
+        <div class="moving__movies__header">
+          <h2 class="moving__movies__heading">Trending Now on Netflix</h2>
+          <span class="moving__movies__sub"><i class="fas fa-play-circle" style="color: #e50914;"></i> Hover to pause • Click any title to preview</span>
+        </div>
+
+        <div class="marquee__container">
+          <!-- Row 1: Drifts Left -->
+          <div class="marquee__wrapper">
+            <div class="marquee__track marquee__track--left" id="marqueeTrack1"></div>
+          </div>
+          <!-- Row 2: Drifts Right -->
+          <div class="marquee__wrapper">
+            <div class="marquee__track marquee__track--right" id="marqueeTrack2"></div>
+          </div>
+        </div>
+      </section>
+
       <section class="features__container">
         <!-- Feature 1 -->
         <div class="feature">
@@ -409,6 +442,21 @@
               <button type="button" class="auth__forgot__link" id="authForgotLink" style="display: none;">Forgot password?</button>
             </div>
 
+            <!-- Interactive Visual Captcha Section -->
+            <div class="auth__captcha__section" id="authCaptchaSection">
+              <label class="captcha__title__label">Security Verification</label>
+              <div class="auth__captcha__box">
+                <canvas id="captchaCanvas" width="130" height="44" class="captcha__canvas"></canvas>
+                <button type="button" id="refreshCaptchaBtn" class="captcha__refresh__btn" title="Refresh Captcha">
+                  <i class="fas fa-sync-alt"></i>
+                </button>
+                <div class="auth__input__container auth__input__container--captcha">
+                  <input type="text" id="captchaInput" class="auth__input captcha__input" placeholder=" " required />
+                  <label for="captchaInput" class="auth__label">Enter code</label>
+                </div>
+              </div>
+            </div>
+
             <button type="submit" class="auth__submit__button" id="authSubmitBtn">Sign In</button>
           </form>
 
@@ -446,6 +494,41 @@
             <button type="submit" class="auth__submit__button">Reset Password</button>
             <button type="button" class="auth__back__button" id="authForgotBackBtn">Back to Sign In</button>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Movie Detail Preview Modal -->
+    <div id="movieDetailModalOverlay" class="movie__detail__overlay" style="display: none;">
+      <div class="movie__detail__modal" id="movieDetailModal">
+        <button class="movie__detail__close" id="movieDetailCloseBtn" aria-label="Close modal">&times;</button>
+        <div class="movie__detail__banner" id="movieDetailBanner">
+          <div class="movie__detail__banner__overlay"></div>
+          <div class="movie__detail__header__content">
+            <h2 id="movieDetailTitle" class="movie__detail__title">Movie Title</h2>
+            <div class="movie__detail__meta">
+              <span id="movieDetailMatch" class="meta__match">98% Match</span>
+              <span id="movieDetailYear" class="meta__year">2024</span>
+              <span id="movieDetailRating" class="meta__badge">16+</span>
+              <span id="movieDetailDuration" class="meta__duration">2h 15m</span>
+              <span class="meta__badge meta__quality">HD</span>
+            </div>
+            <div class="movie__detail__actions">
+              <button class="movie__play__btn" id="moviePlayBtn">
+                <i class="fas fa-play"></i> Play
+              </button>
+              <button class="movie__list__btn" id="movieAddListBtn">
+                <i class="fas fa-plus"></i> My List
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="movie__detail__body">
+          <p id="movieDetailOverview" class="movie__detail__overview">Overview...</p>
+          <div class="movie__detail__extra">
+            <p><strong>Genre:</strong> <span id="movieDetailGenres">Action, Thriller</span></p>
+            <p><strong>Starring:</strong> <span id="movieDetailCast">Cast names</span></p>
+          </div>
         </div>
       </div>
     </div>
