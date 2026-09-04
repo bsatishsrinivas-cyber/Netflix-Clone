@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta charset="UTF-8" />
     <meta name="description" content="Hello this is my first web page!." />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="src/styles.css" />
@@ -43,12 +44,13 @@
               >
                 <option value="english" selected style="color: white;">English</option>
                 <option value="hindi" style="color: white;">हिन्दी</option>
+                <option value="french" style="color: white;">French</option>
               </select>
             </div>
           </div>
 
-          <div class="nav__item">
-            <button class="signin__button">Sign in</button>
+          <div class="nav__item" id="navAuthContainer">
+            <button class="signin__button" id="signInBtn">Sign in</button>
           </div>
         </div>
       </nav>
@@ -355,11 +357,12 @@
           <i class="fas fa-globe"></i>
           <select
             name="languages"
-            id="languagesSelect"
+            id="languagesSelectFooter"
             class="language__drop__down"
           >
             <option value="english" selected>English</option>
             <option value="hindi">हिन्दी</option>
+            <option value="french">French</option>
           </select>
         </div>
       </div>
@@ -367,6 +370,85 @@
         <p>Netflix India</p>
       </div>
     </footer>
+
+    <!-- Interactive Auth Modal -->
+    <div id="authModalOverlay" class="auth__modal__overlay" style="display: none;">
+      <div class="auth__modal" id="authModal">
+        <button class="auth__modal__close" id="authModalClose" aria-label="Close modal">&times;</button>
+        
+        <!-- Sign In & Register Form View -->
+        <div id="authMainView">
+          <h2 class="auth__title" id="authTitle">Sign In</h2>
+          
+          <div class="auth__alert" id="authAlert" style="display: none;"></div>
+
+          <form id="authForm" autocomplete="off">
+            <div class="auth__input__container">
+              <input type="email" id="authEmail" class="auth__input" placeholder=" " required />
+              <label for="authEmail" class="auth__label">Email address</label>
+            </div>
+
+            <div class="auth__input__container">
+              <input type="password" id="authPassword" class="auth__input" placeholder=" " required />
+              <label for="authPassword" class="auth__label">Password</label>
+            </div>
+
+            <!-- Confirm Password (visible only in Create Account mode) -->
+            <div class="auth__input__container" id="authConfirmGroup" style="display: none;">
+              <input type="password" id="authConfirmPassword" class="auth__input" placeholder=" " />
+              <label for="authConfirmPassword" class="auth__label">Confirm Password</label>
+            </div>
+
+            <div class="auth__options__row">
+              <label class="auth__checkbox__container">
+                <input type="checkbox" id="showPasswordToggle" />
+                <span class="auth__checkbox__text">Show Password</span>
+              </label>
+
+              <!-- Forgot Password link (shown on mismatch) -->
+              <button type="button" class="auth__forgot__link" id="authForgotLink" style="display: none;">Forgot password?</button>
+            </div>
+
+            <button type="submit" class="auth__submit__button" id="authSubmitBtn">Sign In</button>
+          </form>
+
+          <div class="auth__switch__container">
+            <span id="authSwitchPrompt">New to Netflix?</span>
+            <button type="button" class="auth__switch__button" id="authSwitchBtn">Create an account now</button>
+          </div>
+        </div>
+
+        <!-- Forgot Password Sub-View -->
+        <div id="authForgotView" style="display: none;">
+          <h2 class="auth__title">Reset Password</h2>
+          <p class="auth__description">Enter your registered email and your new password.</p>
+          
+          <div class="auth__alert" id="authForgotAlert" style="display: none;"></div>
+
+          <form id="authForgotForm" autocomplete="off">
+            <div class="auth__input__container">
+              <input type="email" id="forgotEmail" class="auth__input" placeholder=" " required />
+              <label for="forgotEmail" class="auth__label">Email address</label>
+            </div>
+
+            <div class="auth__input__container">
+              <input type="password" id="forgotNewPassword" class="auth__input" placeholder=" " required />
+              <label for="forgotNewPassword" class="auth__label">New Password</label>
+            </div>
+
+            <div class="auth__options__row">
+              <label class="auth__checkbox__container">
+                <input type="checkbox" id="showForgotNewPasswordToggle" />
+                <span class="auth__checkbox__text">Show Password</span>
+              </label>
+            </div>
+
+            <button type="submit" class="auth__submit__button">Reset Password</button>
+            <button type="button" class="auth__back__button" id="authForgotBackBtn">Back to Sign In</button>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script src="src/index.js"></script>
   </body>
