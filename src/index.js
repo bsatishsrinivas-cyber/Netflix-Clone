@@ -1002,6 +1002,9 @@ document.addEventListener("DOMContentLoaded", () => {
 const starButtons = document.querySelectorAll(".star__btn");
 const feedbackSubmit = document.getElementById("feedbackSubmit");
 const feedbackThanks = document.getElementById("feedbackThanks");
+const feedbackText = document.getElementById("feedbackText");
+const feedbackStars = document.getElementById("feedbackStars");
+const feedbackPrompt = document.querySelector(".feedback__prompt");
 let selectedRating = 0;
 
 starButtons.forEach((btn) => {
@@ -1011,6 +1014,28 @@ starButtons.forEach((btn) => {
       s.classList.toggle("filled", Number(s.dataset.value) <= selectedRating);
     });
   });
+});
+
+feedbackSubmit.addEventListener("click", () => {
+  if (selectedRating === 0) {
+    feedbackThanks.textContent = "Please pick a rating first.";
+    feedbackThanks.style.color = "#e50914";
+    feedbackThanks.classList.add("visible");
+    return;
+  }
+
+  [feedbackPrompt, feedbackStars, feedbackText, feedbackSubmit].forEach((el) => {
+    el.classList.add("feedback--hidden");
+  });
+
+  setTimeout(() => {
+    [feedbackPrompt, feedbackStars, feedbackText, feedbackSubmit].forEach((el) => {
+      el.style.display = "none";
+    });
+    feedbackThanks.textContent = "Thank you for your feedback.";
+    feedbackThanks.style.color = "#46d369";
+    feedbackThanks.classList.add("visible");
+  }, 350);
 });
 
 feedbackSubmit.addEventListener("click", () => {
