@@ -45,7 +45,6 @@ body {
   height: auto;
   display: block;
   object-fit: contain;
-  filter: drop-shadow(0 2px 8px rgba(229, 9, 20, 0.4));
   transition: filter 0.2s ease, transform 0.2s ease;
   user-select: none;
   -webkit-user-drag: none;
@@ -416,10 +415,13 @@ body {
 }
 
 @keyframes pulseGreenDot {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: scale(1);
     opacity: 1;
   }
+
   50% {
     transform: scale(1.35);
     opacity: 0.6;
@@ -2097,10 +2099,21 @@ header.nav--scrolled {
     height: 420px;
   }
 
-  .cf__card--left-1 { transform: translateX(-180px) translateZ(-70px) rotateY(26deg) scale(0.9); }
-  .cf__card--left-2 { transform: translateX(-340px) translateZ(-160px) rotateY(38deg) scale(0.78); }
-  .cf__card--right-1 { transform: translateX(180px) translateZ(-70px) rotateY(-26deg) scale(0.9); }
-  .cf__card--right-2 { transform: translateX(340px) translateZ(-160px) rotateY(-38deg) scale(0.78); }
+  .cf__card--left-1 {
+    transform: translateX(-180px) translateZ(-70px) rotateY(26deg) scale(0.9);
+  }
+
+  .cf__card--left-2 {
+    transform: translateX(-340px) translateZ(-160px) rotateY(38deg) scale(0.78);
+  }
+
+  .cf__card--right-1 {
+    transform: translateX(180px) translateZ(-70px) rotateY(-26deg) scale(0.9);
+  }
+
+  .cf__card--right-2 {
+    transform: translateX(340px) translateZ(-160px) rotateY(-38deg) scale(0.78);
+  }
 }
 
 @media (max-width: 768px) {
@@ -2125,10 +2138,21 @@ header.nav--scrolled {
     font-size: 30px;
   }
 
-  .cf__card--left-1 { transform: translateX(-140px) translateZ(-60px) rotateY(24deg) scale(0.88); }
-  .cf__card--left-2 { display: none; }
-  .cf__card--right-1 { transform: translateX(140px) translateZ(-60px) rotateY(-24deg) scale(0.88); }
-  .cf__card--right-2 { display: none; }
+  .cf__card--left-1 {
+    transform: translateX(-140px) translateZ(-60px) rotateY(24deg) scale(0.88);
+  }
+
+  .cf__card--left-2 {
+    display: none;
+  }
+
+  .cf__card--right-1 {
+    transform: translateX(140px) translateZ(-60px) rotateY(-24deg) scale(0.88);
+  }
+
+  .cf__card--right-2 {
+    display: none;
+  }
 
   .dash__midbar {
     padding: 20px;
