@@ -697,6 +697,90 @@ for (let i = 0; i < accordian.length; i++) {
       backdrop: "assets/posters/squid_game.jpg",
       overview: "Hundreds of cash-strapped players accept a strange invitation to compete in children's games. Inside, a tempting prize awaits with deadly high stakes.",
       cast: "Lee Jung-jae, Park Hae-soo, Wi Ha-jun, Jung Ho-yeon"
+    },
+    {
+      id: "kung-fu-panda",
+      title: "Kung Fu Panda",
+      year: 2008,
+      language: "English",
+      match: "97%",
+      rating: "PG",
+      duration: "1h 32m",
+      genres: ["Animation", "Action", "Comedy"],
+      poster: "assets/posters/kung_fu_panda.jpg",
+      backdrop: "assets/posters/kung_fu_panda.jpg",
+      overview: "Po the panda works in his family's noodle shop while dreaming of becoming a kung-fu master. When he's unexpectedly chosen as the Dragon Warrior, he must believe in himself to defend the Valley of Peace.",
+      cast: "Jack Black, Dustin Hoffman, Angelina Jolie, Ian McShane"
+    },
+    {
+      id: "the-witcher",
+      title: "The Witcher",
+      year: 2019,
+      language: "English",
+      match: "96%",
+      rating: "18+",
+      duration: "3 Seasons",
+      genres: ["Action", "Adventure", "Fantasy"],
+      poster: "assets/posters/witcher.jpg",
+      backdrop: "assets/posters/witcher.jpg",
+      overview: "Geralt of Rivia, a solitary monster hunter, struggles to find his place in a world where people often prove more wicked than beasts.",
+      cast: "Henry Cavill, Anya Chalotra, Freya Allan, Joey Batey"
+    },
+    {
+      id: "dark",
+      title: "Dark",
+      year: 2017,
+      language: "German",
+      match: "98%",
+      rating: "16+",
+      duration: "3 Seasons",
+      genres: ["Sci-Fi", "Mystery", "Thriller"],
+      poster: "assets/posters/dark.jpg",
+      backdrop: "assets/posters/dark.jpg",
+      overview: "A missing child sets four families on a frantic hunt for answers as they unearth a mind-bending mystery that spans three generations.",
+      cast: "Louis Hofmann, Oliver Masucci, Jördis Triebel, Maja Schöne"
+    },
+    {
+      id: "peaky-blinders",
+      title: "Peaky Blinders",
+      year: 2013,
+      language: "English",
+      match: "99%",
+      rating: "18+",
+      duration: "6 Seasons",
+      genres: ["Crime", "Drama", "History"],
+      poster: "assets/posters/peaky_blinders.jpg",
+      backdrop: "assets/posters/peaky_blinders.jpg",
+      overview: "A notorious gang in 1919 Birmingham, England, is led by the fierce Tommy Shelby, a crime boss set on moving up in the world no matter the cost.",
+      cast: "Cillian Murphy, Paul Anderson, Helen McCrory, Tom Hardy"
+    },
+    {
+      id: "stranger-things",
+      title: "Stranger Things",
+      year: 2016,
+      language: "English",
+      match: "99%",
+      rating: "16+",
+      duration: "4 Seasons",
+      genres: ["Sci-Fi", "Horror", "Drama"],
+      poster: "assets/posters/stranger_things.jpg",
+      backdrop: "assets/posters/stranger_things.jpg",
+      overview: "When a young boy vanishes, a small town uncovers a mystery involving secret experiments, terrifying supernatural forces and one strange little girl.",
+      cast: "Millie Bobby Brown, Finn Wolfhard, Winona Ryder, David Harbour"
+    },
+    {
+      id: "wednesday",
+      title: "Wednesday",
+      year: 2022,
+      language: "English",
+      match: "98%",
+      rating: "13+",
+      duration: "1 Season",
+      genres: ["Comedy", "Fantasy", "Mystery"],
+      poster: "assets/posters/wednesday.jpg",
+      backdrop: "assets/posters/wednesday.jpg",
+      overview: "Smart, sarcastic and a little dead inside, Wednesday Addams investigates a murder spree while making new friends — and foes — at Nevermore Academy.",
+      cast: "Jenna Ortega, Gwendoline Christie, Riki Lindhome, Christina Ricci"
     }
   ];
 
@@ -913,6 +997,233 @@ for (let i = 0; i < accordian.length; i++) {
   }
 
   initMarquees();
+
+  // ── 3D Rolling & Changing Movie Poster Wall Engine (Continuous Dynamic Barrel Reels) ──
+  const ROLLING_MOVIES_POOL = [
+    { title: "Kung Fu Panda", poster: "assets/posters/kung_fu_panda.jpg", match: "97%", rating: "U/A", year: 2024, quality: "4K" },
+    { title: "The Witcher", poster: "assets/posters/witcher.jpg", match: "98%", rating: "18+", year: 2023, quality: "4K" },
+    { title: "Lucifer", poster: "assets/coverflow/lucifer.jpg", match: "98%", rating: "16+", year: 2021, quality: "HD" },
+    { title: "Dark", poster: "assets/posters/dark.jpg", match: "99%", rating: "16+", year: 2020, quality: "4K" },
+    { title: "Money Heist", poster: "assets/coverflow/money_heist.jpg", match: "99%", rating: "18+", year: 2021, quality: "4K" },
+    { title: "Peaky Blinders", poster: "assets/posters/peaky_blinders.jpg", match: "99%", rating: "18+", year: 2022, quality: "4K" },
+    { title: "Stranger Things", poster: "assets/posters/stranger_things.jpg", match: "99%", rating: "16+", year: 2022, quality: "4K" },
+    { title: "Wednesday", poster: "assets/posters/wednesday.jpg", match: "98%", rating: "13+", year: 2022, quality: "4K" },
+    { title: "Breaking Bad", poster: "assets/posters/breaking_bad.jpg", match: "99%", rating: "18+", year: 2013, quality: "4K" },
+    { title: "Squid Game", poster: "assets/posters/squid_game.jpg", match: "98%", rating: "18+", year: 2024, quality: "4K" },
+    { title: "Inception", poster: "assets/posters/inception.jpg", match: "99%", rating: "13+", year: 2010, quality: "4K" },
+    { title: "Interstellar", poster: "assets/posters/interstellar.jpg", match: "98%", rating: "13+", year: 2014, quality: "4K" },
+    { title: "Dune: Part Two", poster: "assets/posters/dune_2.jpg", match: "96%", rating: "13+", year: 2024, quality: "4K" },
+    { title: "Deadpool & Wolverine", poster: "assets/posters/deadpool_wolverine.jpg", match: "97%", rating: "18+", year: 2024, quality: "4K" },
+    { title: "The Batman", poster: "assets/posters/the_batman.jpg", match: "95%", rating: "16+", year: 2022, quality: "4K" },
+    { title: "Oppenheimer", poster: "assets/posters/oppenheimer.jpg", match: "97%", rating: "18+", year: 2023, quality: "4K" },
+    { title: "Onward", poster: "assets/coverflow/onward.jpg", match: "93%", rating: "U", year: 2020, quality: "HD" },
+    { title: "World War Z", poster: "assets/coverflow/world_war_z.jpg", match: "94%", rating: "16+", year: 2013, quality: "HD" },
+    { title: "Free Guy", poster: "assets/coverflow/free_guy.jpg", match: "95%", rating: "13+", year: 2021, quality: "HD" },
+    { title: "Looper", poster: "assets/coverflow/looper.jpg", match: "92%", rating: "18+", year: 2012, quality: "HD" },
+    { title: "Smallfoot", poster: "assets/coverflow/smallfoot.jpg", match: "90%", rating: "U", year: 2018, quality: "HD" },
+    { title: "Vikings", poster: "assets/coverflow/vikings.jpg", match: "97%", rating: "18+", year: 2020, quality: "4K" },
+    { title: "Mindhunter", poster: "assets/coverflow/mindhunter.jpg", match: "98%", rating: "18+", year: 2019, quality: "4K" },
+    { title: "Penguins", poster: "assets/coverflow/penguins.jpg", match: "91%", rating: "U", year: 2014, quality: "HD" },
+    { title: "Amaran", poster: "assets/posters/amaran.jpg", match: "97%", rating: "16+", year: 2024, quality: "4K" },
+    { title: "Maharaja", poster: "assets/posters/maharaja.jpg", match: "98%", rating: "16+", year: 2024, quality: "4K" },
+    { title: "Leo", poster: "assets/posters/leo.jpg", match: "95%", rating: "18+", year: 2023, quality: "4K" },
+    { title: "Master", poster: "assets/posters/master.jpg", match: "94%", rating: "16+", year: 2021, quality: "4K" },
+    { title: "Jailer", poster: "assets/posters/jailer.jpg", match: "96%", rating: "16+", year: 2023, quality: "4K" },
+    { title: "Vikram", poster: "assets/posters/vikram.jpg", match: "98%", rating: "18+", year: 2022, quality: "4K" }
+  ];
+
+  function renderTitleFaceContent(movie) {
+    return `
+      <img src="${movie.poster}" alt="${escapeHTML(movie.title)}" loading="eager" onerror="this.src='https://assets.nflxext.com/ffe/siteui/acquisition/ourStory/fuji/desktop/boxshot.png'" />
+      <div class="card__top__badges">
+        <span class="card__n__badge">N</span>
+        <span class="card__quality__badge">${movie.quality || "4K"}</span>
+      </div>
+      <div class="card__bottom__bar">
+        <div class="card__title__text">${escapeHTML(movie.title)}</div>
+        <div class="card__meta__row">
+          <span class="card__match">${movie.match}</span>
+          <span class="card__rating">${movie.rating}</span>
+          <span class="card__year">${movie.year}</span>
+        </div>
+      </div>
+    `;
+  }
+
+  function init3DRollingWall() {
+    const wall = document.getElementById("heroRollingWall");
+    if (!wall) return;
+
+    wall.innerHTML = "";
+    const allCardControllers = [];
+    const NUM_ROWS = 4;
+    const NUM_COLS = 8;
+
+    for (let r = 0; r < NUM_ROWS; r++) {
+      const row = document.createElement("div");
+      row.className = "rolling__row";
+
+      for (let c = 0; c < NUM_COLS; c++) {
+        const movieIndex = (r * NUM_COLS + c) % ROLLING_MOVIES_POOL.length;
+        const currentMovie = ROLLING_MOVIES_POOL[movieIndex];
+        const nextMovie = ROLLING_MOVIES_POOL[(movieIndex + 7) % ROLLING_MOVIES_POOL.length];
+
+        const card = document.createElement("div");
+        card.className = "rolling__card";
+        card.setAttribute("data-row", r);
+        card.setAttribute("data-col", c);
+
+        card.innerHTML = `
+          <div class="rolling__card__inner">
+            <div class="rolling__face rolling__face--front">
+              ${renderTitleFaceContent(currentMovie)}
+            </div>
+            <div class="rolling__face rolling__face--back">
+              ${renderTitleFaceContent(nextMovie)}
+            </div>
+          </div>
+        `;
+
+        const inner = card.querySelector(".rolling__card__inner");
+        const frontFace = card.querySelector(".rolling__face--front");
+        const backFace = card.querySelector(".rolling__face--back");
+
+        const controller = {
+          row: r,
+          col: c,
+          element: card,
+          inner: inner,
+          frontFace: frontFace,
+          backFace: backFace,
+          isFlipped: false,
+          isBusy: false,
+          currentMovie: currentMovie,
+
+          rollToNewMovie: function (targetMovie = null) {
+            if (this.isBusy) return;
+            this.isBusy = true;
+
+            const next = targetMovie || ROLLING_MOVIES_POOL[Math.floor(Math.random() * ROLLING_MOVIES_POOL.length)];
+            this.inner.classList.add("is-rolling-active");
+
+            if (!this.isFlipped) {
+              // Roll from 0 to -180deg
+              this.backFace.innerHTML = renderTitleFaceContent(next);
+              this.inner.classList.remove("is-rolling-360");
+              this.inner.classList.add("is-rolling-180");
+              this.isFlipped = true;
+              this.currentMovie = next;
+
+              setTimeout(() => {
+                this.inner.classList.remove("is-rolling-active");
+                this.isBusy = false;
+              }, 850);
+            } else {
+              // Roll from -180deg to -360deg
+              this.frontFace.innerHTML = renderTitleFaceContent(next);
+              this.inner.classList.remove("is-rolling-180");
+              this.inner.classList.add("is-rolling-360");
+              this.isFlipped = false;
+              this.currentMovie = next;
+
+              setTimeout(() => {
+                this.inner.classList.remove("is-rolling-active");
+                // Seamlessly reset transform to 0 without visible jump
+                this.inner.style.transition = "none";
+                this.inner.classList.remove("is-rolling-360");
+                void this.inner.offsetHeight; // reflow
+                this.inner.style.transition = "";
+                this.isBusy = false;
+              }, 850);
+            }
+          }
+        };
+
+        // Interactive hover: rolls and changes the movie card
+        card.addEventListener("mouseenter", function () {
+          if (!controller.isBusy) {
+            controller.rollToNewMovie();
+          }
+        });
+
+        // Interactive click: rolls and opens the movie detail preview
+        card.addEventListener("click", function () {
+          controller.rollToNewMovie();
+          const found = MOVIES_DATABASE.find(
+            m => m.title.toLowerCase() === controller.currentMovie.title.toLowerCase()
+          );
+          if (found) {
+            openMovieDetail(found);
+          }
+        });
+
+        allCardControllers.push(controller);
+        row.appendChild(card);
+      }
+
+      wall.appendChild(row);
+    }
+
+    // ── Continuous Rolling Wave Engine ──
+    // Every 1.8 seconds, launch a dynamic cascading roll wave across title cards!
+    let waveStep = 0;
+    setInterval(() => {
+      if (allCardControllers.length === 0) return;
+      waveStep = (waveStep + 1) % 4;
+
+      if (waveStep === 0) {
+        // Cascading column roll wave from left to right
+        for (let col = 0; col < NUM_COLS; col++) {
+          const colCards = allCardControllers.filter(c => c.col === col);
+          colCards.forEach((c) => {
+            setTimeout(() => c.rollToNewMovie(), col * 120);
+          });
+        }
+      } else if (waveStep === 1) {
+        // Diagonal cascading roll wave
+        allCardControllers.forEach((c) => {
+          const delay = (c.row + c.col) * 110;
+          setTimeout(() => c.rollToNewMovie(), delay);
+        });
+      } else if (waveStep === 2) {
+        // Alternating checkerboard roll wave
+        allCardControllers.forEach((c) => {
+          if ((c.row + c.col) % 2 === 0) {
+            setTimeout(() => c.rollToNewMovie(), Math.random() * 300);
+          }
+        });
+      } else {
+        // Cluster roll: pick 6 random cards
+        for (let i = 0; i < 6; i++) {
+          const rand = allCardControllers[Math.floor(Math.random() * allCardControllers.length)];
+          setTimeout(() => rand.rollToNewMovie(), i * 140);
+        }
+      }
+    }, 1900);
+
+    // ── Interactive "Roll All Movie Cards" Button ──
+    const rollAllBtn = document.getElementById("heroRollAllBtn");
+    if (rollAllBtn) {
+      rollAllBtn.addEventListener("click", function () {
+        const icon = rollAllBtn.querySelector("i");
+        if (icon) icon.style.transform = "rotate(720deg)";
+
+        // Fast domino cascading roll across every card
+        allCardControllers.forEach((c) => {
+          const delay = c.col * 85 + c.row * 70;
+          setTimeout(() => {
+            c.rollToNewMovie();
+          }, delay);
+        });
+
+        setTimeout(() => {
+          if (icon) icon.style.transform = "";
+        }, 1200);
+      });
+    }
+  }
+
+  init3DRollingWall();
 
   window.addEventListener("keydown", function (e) {
     if (e.key === "Escape") {

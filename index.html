@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="description" content="Hello this is my first web page!." />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="src/styles.css" />
+  <link rel="stylesheet" href="src/styles.css?v=final_v7" />
   <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
     integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +20,9 @@
   <header>
     <nav class="navbar">
       <div class="navbar__brand">
-        <img src="https://www.freepnglogos.com/uploads/netflix-logo-0.png" alt="logo" class="brand__logo" />
+        <svg class="brand__logo" viewBox="0 0 111 30" aria-label="Netflix" fill="#e50914">
+          <path d="M105.062 14.28L111 30c-1.75-.25-3.499-.563-5.28-.845l-3.345-8.686-3.437 7.969c-1.687-.282-3.344-.376-5.031-.595l6.042-13.75-5.813-13.843h5.063l3.281 8.438 3.125-8.438h5.031l-5.562 14.032zM90.468 16.655v10.782c-1.625-.094-3.219-.188-4.812-.188V.28h4.812v11.532l.063.031 6.844-11.563h4.969L96.25 10.969l6.5 13.813h-5.063l-4.125-8.844-3.094.719zM74.875.28h4.813v24.688c-1.594-.094-3.219-.188-4.813-.25V.281zM64.781 4.563h-6.25V.281h17.313v4.282H69.594v20.75c-1.625-.062-3.219-.093-4.813-.093V4.562zM45.594 4.563h-6.25V.281H56.656v4.282H50.406v20.813c-1.625-.031-3.219-.063-4.812-.063V4.563zM25.75 25.875c1.625.063 3.25.125 4.875.25V14.78h6.438v-4.125H30.625V4.563h7.25V.281H25.75v25.594zM0 29.594c3.781.563 7.594 1.156 11.438 1.813V18.344l5.344 13.594c3.469.625 6.969 1.188 10.531 1.844V.281h-4.812v15.938L16.25.281H11.438v24.406C7.625 24.125 3.813 23.656 0 23.219v6.375z"/>
+        </svg>
       </div>
 
       <div class="navbar__nav__items">
@@ -28,10 +30,11 @@
           <div class="dropdown__container">
             <i class="fas fa-globe"></i>
             <select name="languages" id="languagesSelect" class="language__drop__down">
-              <option value="english" selected style="color: white;">English</option>
-              <option value="hindi" style="color: white;">हिन्दी</option>
-              <option value="french" style="color: white;">French</option>
+              <option value="english" selected>English</option>
+              <option value="hindi">हिन्दी</option>
+              <option value="french">French</option>
             </select>
+            <i class="fas fa-chevron-down nav__lang__chevron"></i>
           </div>
         </div>
 
@@ -43,14 +46,17 @@
   </header>
 
   <main>
+    <!-- Hero Section with 3D Rolling & Changing Movie Poster Wall -->
     <section class="hero">
-      <div class="hero__bg__image__container">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/9c5457b8-9ab0-4a04-9fc1-e608d5670f1a/710d74e0-7158-408e-8d9b-23c219dee5df/IN-en-20210719-popsignuptwoweeks-perspective_alpha_website_small.jpg"
-          alt="BG hero image" class="hero__bg__image" />
+      <!-- 3D Rolling Movie Cards Matrix Stage -->
+      <div class="hero__rolling__stage" aria-hidden="true" id="heroRollingWall">
+        <!-- Dynamically generated 3D rolling flipper cards in 5 tilted rows -->
       </div>
-      <div class="hero__bg__overlay"></div>
 
+      <!-- Atmospheric Dark Radial Vignette & Edge Shadows -->
+      <div class="hero__overlay"></div>
+
+      <!-- Centered Hero Card -->
       <div class="hero__card">
         <h1 class="hero__title">
           Unlimited Movies TV,<br />
@@ -65,7 +71,7 @@
             <button type="button" id="clearSearchBtn" class="clear__search__btn" style="display: none;"
               title="Clear search">&times;</button>
             <button type="button" class="primary__button movie__search__btn" id="movieSearchBtn">
-              Search <i class="fal fa-chevron-right"></i>
+              Search <i class="fas fa-chevron-right"></i>
             </button>
           </div>
 
@@ -78,6 +84,17 @@
             <div class="movie__results__list" id="movieResultsList">
               <!-- Dynamically populated -->
             </div>
+          </div>
+        </div>
+
+        <!-- Interactive 3D Rolling Controls & Status Indicator -->
+        <div class="hero__roll__controls">
+          <button type="button" class="hero__roll__all__btn" id="heroRollAllBtn" title="Click to trigger a 3D roll across all title cards!">
+            <i class="fas fa-dice"></i> <span>Roll All Movie Cards</span>
+          </button>
+          <div class="hero__roll__indicator">
+            <span class="roll__pulse__dot"></span>
+            <span>3D Title Reels Active • Roll & Change on Click or Wave</span>
           </div>
         </div>
       </div>
@@ -486,7 +503,7 @@
         </div>
       </div>
 
-      <script src="src/index.js"></script>
+      <script src="src/index.js?v=final_v7"></script>
 </body>
 
 </html>
